@@ -24,7 +24,13 @@ class images_activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_images)
-
+        var Del_item=false
+        var uri:Uri
+        var item1=intent.getParcelableExtra<itemViewModel>("ItemsViewModel")
+        if(item1!=null){
+            Del_item=true
+            var uri=item1.uri
+        }
         val recyclerView = findViewById<RecyclerView>(R.id.recycleview)
         recyclerView.isNestedScrollingEnabled = false
 
@@ -39,6 +45,9 @@ class images_activity : AppCompatActivity() {
                 val wait = op?.await()
                 if (wait != null) {
                     withContext(Dispatchers.Main) {
+                        if(Del_item){
+                            dataobject.remove(item1)
+                        }
                         val recyclerAdapter = RecyclerItemViewModel(this@images_activity, dataobject)
                         recyclerView.layoutManager = GridLayoutManager(this@images_activity, 2)
                         recyclerView.adapter = recyclerAdapter
