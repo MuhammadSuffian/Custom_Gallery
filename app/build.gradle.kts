@@ -6,7 +6,9 @@ plugins {
 android {
     namespace = "com.example.customgallery"
     compileSdk = 34
-
+    buildFeatures {
+        viewBinding = true
+    }
     defaultConfig {
         applicationId = "com.example.customgallery"
         minSdk = 24
@@ -47,4 +49,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 }

@@ -15,7 +15,7 @@ class RecyclerItemViewModel(val context: Context, var arrContact: ArrayList<item
     class ViewHolder(itemViewModel: View) : RecyclerView.ViewHolder(itemViewModel) {
         val imageView: ImageView = itemViewModel.findViewById(R.id.Image_View)
     }
-    var onitemclick:((itemViewModel)->Unit)?=null
+    var onitemclick: ((itemViewModel) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Log.d("Tag", "Holder Created")
@@ -30,11 +30,14 @@ class RecyclerItemViewModel(val context: Context, var arrContact: ArrayList<item
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Log.d("Tag", "Hello Suffian in Bind View Holder")
+        val currentItem = arrContact[position]
         Glide.with(context)
             .load(arrContact[position].uri)
             //.override(300, 200)
             .error(R.drawable.ic_launcher_background)
             .into(holder.imageView)
-       
+        holder.imageView.setOnClickListener {
+            onitemclick?.invoke(currentItem)
+        }
     }
 }
