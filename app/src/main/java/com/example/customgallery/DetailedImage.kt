@@ -37,17 +37,17 @@ class DetailedImage : AppCompatActivity() {
                 text_viewv1.text= "Size:"+picsize.toString()+" MB"
             }
            Del_vtn.setOnClickListener(){
-               Toast.makeText(this,"Del Btn Clicked",Toast.LENGTH_SHORT).show()
+               //Toast.makeText(this,"Del Btn Clicked",Toast.LENGTH_SHORT).show()
                try{
 
                    val intent = Intent(this, images_activity::class.java)
                    //intent.removeExtra("ItemsViewModel")
                    intent.putExtra("ItemsViewModel", item)
                    startActivity(intent)
-                   val timi=intent.getParcelableExtra<itemViewModel>("ItemsViewModel")
-                   if(timi!=null){
-                       Toast.makeText(this,"Not Null",Toast.LENGTH_SHORT).show()
-                   }
+//                   val timi=intent.getParcelableExtra<itemViewModel>("ItemsViewModel")
+//                   if(timi!=null){
+//                       Toast.makeText(this,"Not Null",Toast.LENGTH_SHORT).show()
+//                   }
                   // item.uri?.let { contentResolver.delete(it,null,null) }
 
                }
